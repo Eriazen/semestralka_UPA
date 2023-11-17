@@ -6,7 +6,7 @@ namespace Fractals
     {
         // deklarace/inicializace
         private Bitmap bm;
-        private Pen pen = Pens.Red;
+        private Pen pen = new Pen(Color.Red);
         private Graphics gr;
 
 
@@ -16,7 +16,11 @@ namespace Fractals
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        { // nakresli fraktal po spusteni
+        {
+            // vybere dragon curve jako zakladni hodnotu
+            comboBox1.SelectedIndex = 0;
+
+            // vykresli dragoncurve fraktal po spusteni
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
             gr = Graphics.FromImage(bm);
 
@@ -27,11 +31,6 @@ namespace Fractals
             int iterations = (int)numericUpDown1.Value;
 
             gr = DragonCurve.DrawDragonLine(gr, iterations, Direction.Right, x, y, fx, fy, pen);
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-            // musim odstranit
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,19 +55,18 @@ namespace Fractals
             e.Graphics.DrawImage(bm, 0, 0, bm.Width, bm.Height);
         }
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            // musim odstranit
-        }
-
         private void button2_Click(object sender, EventArgs e)
-        { // WIP - zmeny barvu dle vyberu
-            Pen pen = new Pen(Color.Red);
+        { // zmena barvy dle vyberu
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = cd.Color;
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

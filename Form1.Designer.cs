@@ -34,6 +34,8 @@
             numericUpDown1 = new NumericUpDown();
             label1 = new Label();
             button2 = new Button();
+            comboBox1 = new ComboBox();
+            label2 = new Label();
             colorDialog1 = new ColorDialog();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -52,6 +54,8 @@
             tableLayoutPanel1.Controls.Add(numericUpDown1, 3, 2);
             tableLayoutPanel1.Controls.Add(label1, 3, 1);
             tableLayoutPanel1.Controls.Add(button2, 2, 1);
+            tableLayoutPanel1.Controls.Add(comboBox1, 0, 2);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -61,7 +65,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel1.Size = new Size(978, 744);
             tableLayoutPanel1.TabIndex = 0;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // button1
             // 
@@ -95,7 +98,6 @@
             numericUpDown1.Size = new Size(133, 31);
             numericUpDown1.TabIndex = 2;
             numericUpDown1.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // label1
             // 
@@ -121,6 +123,30 @@
             button2.Text = "Výběr barvy";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Dock = DockStyle.Fill;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Dragon-curve fraktál", "Mandelbrot fraktál", "Julia-set fraktál" });
+            comboBox1.Location = new Point(3, 706);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(389, 33);
+            comboBox1.TabIndex = 5;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.ForeColor = SystemColors.Control;
+            label2.Location = new Point(3, 662);
+            label2.Name = "label2";
+            label2.Size = new Size(389, 41);
+            label2.TabIndex = 6;
+            label2.Text = "Aktuálně vybraný fraktál:";
+            label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // colorDialog1
             // 
@@ -153,5 +179,7 @@
         private Label label1;
         private Button button2;
         private ColorDialog colorDialog1;
+        private ComboBox comboBox1;
+        private Label label2;
     }
 }
