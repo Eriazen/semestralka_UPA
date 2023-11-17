@@ -35,16 +35,26 @@ namespace Fractals
 
         private void button1_Click(object sender, EventArgs e)
         { // zmena hodnot a render po kliknuti
-            bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
-            gr = Graphics.FromImage(bm);
 
             float x = panel1.Width / 3;
             float y = panel1.Height / 4;
             float fx = panel1.Width / 2;
             float fy = panel1.Height / 3;
-            int iterations = (int)numericUpDown1.Value;
+            var iterace = (int)numericUpDown1.Value;
 
-            gr = DragonCurve.DrawDragonLine(gr, iterations, Direction.Right, x, y, fx, fy, pen);
+            // WIP ---- vykresli fraktal dle vyberu
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+                    gr = Graphics.FromImage(bm);
+                    gr = DragonCurve.DrawDragonLine(gr, iterace, Direction.Right, x, y, fx, fy, pen);
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
 
             // donuti program znovu vykreslit fraktal
             panel1.Invalidate();

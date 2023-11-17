@@ -1,1 +1,1 @@
-# Fractals
+# Generátor fraktálù

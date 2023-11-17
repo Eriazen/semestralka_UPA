@@ -127,6 +127,7 @@
             // comboBox1
             // 
             comboBox1.Dock = DockStyle.Fill;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Dragon-curve fraktál", "Mandelbrot fraktál", "Julia-set fraktál" });
             comboBox1.Location = new Point(3, 706);
@@ -159,10 +160,12 @@
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(978, 744);
             Controls.Add(tableLayoutPanel1);
+            MaximumSize = new Size(1000, 800);
+            MinimumSize = new Size(1000, 800);
             Name = "Form1";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Heighway Dragon";
+            Text = "Generátor fraktálů";
             Load += Form1_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
