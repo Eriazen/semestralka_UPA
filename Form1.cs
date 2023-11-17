@@ -1,4 +1,3 @@
-using System.Security.Cryptography.X509Certificates;
 using Fractals.Fraktály;
 
 namespace Fractals
@@ -6,7 +5,9 @@ namespace Fractals
     public partial class Form1 : Form
     {
         private Bitmap bm;
-        private Pen pen;
+        private Pen pen = Pens.Red;
+        private Graphics gr;
+
 
         public Form1()
         {
@@ -15,11 +16,9 @@ namespace Fractals
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Graphics gr;
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
             gr = Graphics.FromImage(bm);
 
-            Pen pen = Pens.Red;
             float x = panel1.Width / 3;
             float y = panel1.Height / 4;
             float fx = panel1.Width / 2;
@@ -27,7 +26,6 @@ namespace Fractals
             int iterations = (int)numericUpDown1.Value;
 
             gr = DragonCurve.DrawDragonLine(gr, iterations, Direction.Right, x, y, fx, fy, pen);
-            gr.Dispose();
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -37,15 +35,23 @@ namespace Fractals
 
         private void button1_Click(object sender, EventArgs e)
         {
+            bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
+            gr = Graphics.FromImage(bm);
 
+            float x = panel1.Width / 3;
+            float y = panel1.Height / 4;
+            float fx = panel1.Width / 2;
+            float fy = panel1.Height / 3;
+            int iterations = (int)numericUpDown1.Value;
+
+            gr = DragonCurve.DrawDragonLine(gr, iterations, Direction.Right, x, y, fx, fy, pen);
+
+            panel1.Invalidate();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            Graphics gr = e.Graphics;
-
-            gr.DrawImage(bm, 0, 0, bm.Width, bm.Height);
-            gr.Dispose();
+            e.Graphics.DrawImage(bm, 0, 0, bm.Width, bm.Height);
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -55,13 +61,12 @@ namespace Fractals
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Pen pen = new Pen(Color.Red);
             ColorDialog cd = new ColorDialog();
-            cd.ShowDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = cd.Color;
             }
-            cd.Dispose();
         }
     }
 }
