@@ -1,7 +1,7 @@
 ﻿namespace Fractals.Fraktály
 {
     internal class DragonCurve
-    {
+    { // rekurzivni metoda pro kresleni Dragon Curve fraktalu, WIP - pravdepodobne prevedu na objekt
         public static Graphics DrawDragonLine(Graphics gr, int level,
             Direction turn_towards, float x1, float y1, float dx, float dy, Pen pen)
         {
