@@ -80,7 +80,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.AppWorkspace;
+            panel1.BackColor = SystemColors.Control;
             tableLayoutPanel1.SetColumnSpan(panel1, 5);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);

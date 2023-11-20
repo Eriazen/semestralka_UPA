@@ -8,6 +8,7 @@ namespace Fractals
         private Bitmap bm;
         private Pen pen = new Pen(Color.Red);
         private Graphics gr;
+        private Color barva = Color.White;
 
 
         public Form1()
@@ -51,6 +52,7 @@ namespace Fractals
                     gr = DragonCurve.DrawDragonLine(gr, iterace, Direction.Right, x, y, fx, fy, pen);
                     break;
                 case 1:
+                    bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva);
                     break;
                 case 2:
                     break;
@@ -71,12 +73,21 @@ namespace Fractals
             if (cd.ShowDialog() == DialogResult.OK)
             {
                 pen.Color = cd.Color;
+                barva = cd.Color;
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    numericUpDown1.Maximum = 20; break;
+                case 1:
+                    numericUpDown1.Maximum = 100; break;
+                case 2:
+                    break;
+            }
         }
     }
 }
