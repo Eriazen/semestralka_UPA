@@ -1,13 +1,15 @@
-﻿namespace Fractals.Fraktály
+﻿using System.Drawing.Text;
+
+namespace Fractals.Fraktály
 {
     internal class DragonCurve
-    { // rekurzivni metoda pro kresleni Dragon Curve fraktalu, (WIP --- pravdepodobne prevedu na objekt)
+    { // rekurzivni metoda pro kresleni Dragon Curve fraktalu
         public static Graphics DrawDragonLine(Graphics gr, int iterace,
-            Direction otocit, float x1, float y1, float dx, float dy, Pen pen)
+            Direction otocit, float sirka, float vyska, float dx, float dy, Pen pen)
         {
             if (iterace <= 0)
             {
-                gr.DrawLine(pen, x1, y1, x1 + dx, y1 + dy);
+                gr.DrawLine(pen, sirka, vyska, sirka + dx, vyska + dy);
             }
             else
             {
@@ -19,9 +21,9 @@
                 {
                     // Otoc vpravo
                     DrawDragonLine(gr, iterace - 1, Direction.Right,
-                        x1, y1, dx2, dy2, pen);
-                    float x2 = x1 + dx2;
-                    float y2 = y1 + dy2;
+                        sirka, vyska, dx2, dy2, pen);
+                    float x2 = sirka + dx2;
+                    float y2 = vyska + dy2;
                     DrawDragonLine(gr, iterace - 1, Direction.Left,
                         x2, y2, dy2, -dx2, pen);
                 }
@@ -29,9 +31,9 @@
                 {
                     // Otoc vlevo
                     DrawDragonLine(gr, iterace - 1, Direction.Right,
-                        x1, y1, dy2, -dx2, pen);
-                    float x2 = x1 + dy2;
-                    float y2 = y1 - dx2;
+                        sirka, vyska, dy2, -dx2, pen);
+                    float x2 = sirka + dy2;
+                    float y2 = vyska - dx2;
                     DrawDragonLine(gr, iterace - 1, Direction.Left,
                         x2, y2, dx2, dy2, pen);
                 }

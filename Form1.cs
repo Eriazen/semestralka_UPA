@@ -8,8 +8,7 @@ namespace Fractals
         private Bitmap bm;
         private Pen pen = new Pen(Color.Red);
         private Graphics gr;
-        private Color barva = Color.White;
-
+        private Color barva = Color.Black;
 
         public Form1()
         {
@@ -25,36 +24,33 @@ namespace Fractals
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
             gr = Graphics.FromImage(bm);
 
-            float x = panel1.Width / 3;
-            float y = panel1.Height / 4;
-            float fx = panel1.Width / 2;
-            float fy = panel1.Height / 3;
-            int iterations = (int)numericUpDown1.Value;
-
-            gr = DragonCurve.DrawDragonLine(gr, iterations, Direction.Right, x, y, fx, fy, pen);
+            gr = DragonCurve.DrawDragonLine(gr, 10, Direction.Right, panel1.Width / 3,
+                panel1.Height / 4, panel1.Width / 2, panel1.Height / 3, pen);
         }
 
         private void button1_Click(object sender, EventArgs e)
         { // zmena hodnot a render po kliknuti
 
-            float x = panel1.Width / 3;
-            float y = panel1.Height / 4;
-            float fx = panel1.Width / 2;
-            float fy = panel1.Height / 3;
-            var iterace = (int)numericUpDown1.Value;
+            // inicializace
+            int iterace = (int)numericUpDown1.Value;
+            int priblizeni = (int)numericUpDown2.Value;
+            double hScroll = (double)hScrollBar1.Value / 1000;
+            double vScroll = (double)vScrollBar1.Value / 1000;
 
             // WIP ---- vykresli fraktal dle vyberu
             switch (comboBox1.SelectedIndex)
             {
-                case 0:
+                case 0: // dragon curve
                     bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
                     gr = Graphics.FromImage(bm);
-                    gr = DragonCurve.DrawDragonLine(gr, iterace, Direction.Right, x, y, fx, fy, pen);
+
+                    gr = DragonCurve.DrawDragonLine(gr, iterace, Direction.Right, panel1.Width / 3,
+                        panel1.Height / 4, panel1.Width / 2, panel1.Height / 3, pen);
                     break;
-                case 1:
-                    bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva);
+                case 1: //mandelbrot
+                    bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva, priblizeni, hScroll, vScroll);
                     break;
-                case 2:
+                case 2: // julia
                     break;
             }
 
@@ -82,12 +78,39 @@ namespace Fractals
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
-                    numericUpDown1.Maximum = 20; break;
+                    numericUpDown1.Maximum = 20;
+                    numericUpDown1.Value = 10;
+                    break;
                 case 1:
-                    numericUpDown1.Maximum = 100; break;
+                    numericUpDown1.Maximum = 100;
+                    numericUpDown1.Value = 50;
+                    break;
                 case 2:
                     break;
             }
+        }
+
+        // otevre savefile dialog
+        private void button3_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            bm.Save(saveFileDialog1.FileName);
+        }
+
+        // otevre openfile dialog
+        private void button4_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            bm = new Bitmap(openFileDialog1.FileName);
+            panel1.Invalidate();
         }
     }
 }

@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fractals.Fraktály
+﻿namespace Fractals.Fraktály
 {
     internal class MandelbrotVypocty
     {
+        // deklarace
         private double x, y;
 
+        // konstruktor
         public MandelbrotVypocty(double x, double y)
         {
             this.x = x;
             this.y = y;
         }
+
+        // umocni
         public void Mocnina()
         {
             double temp = x * x - y * y;
@@ -23,11 +20,13 @@ namespace Fractals.Fraktály
             x = temp;
         }
 
+        // zjisti velikost
         public double Magnituda()
         {
             return Math.Sqrt(x * x + y * y);
         }
 
+        // prida hodnotu
         public void Pridej(MandelbrotVypocty c)
         {
             x += c.x;
