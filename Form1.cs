@@ -1,4 +1,5 @@
 using Fractals.Fraktály;
+using ThreadState = System.Diagnostics.ThreadState;
 
 namespace Fractals
 {
@@ -9,6 +10,8 @@ namespace Fractals
         private Pen pen = new Pen(Color.Red);
         private Graphics gr;
         private Color barva = Color.Black;
+        private int iterace, priblizeni;
+        private double hScroll, vScroll;
 
         public Form1()
         {
@@ -19,6 +22,7 @@ namespace Fractals
         {
             // vybere dragon curve jako zakladni hodnotu
             comboBox1.SelectedIndex = 0;
+            iterace = 10;
 
             // vykresli dragoncurve fraktal po spusteni
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
@@ -32,12 +36,12 @@ namespace Fractals
         { // zmena hodnot a render po kliknuti
 
             // inicializace
-            int iterace = (int)numericUpDown1.Value;
-            int priblizeni = (int)numericUpDown2.Value;
-            double hScroll = (double)hScrollBar1.Value / 1000;
-            double vScroll = (double)vScrollBar1.Value / 1000;
+            iterace = (int)numericUpDown1.Value;
+            priblizeni = (int)numericUpDown2.Value;
+            hScroll = (double)hScrollBar1.Value / 1000;
+            vScroll = (double)vScrollBar1.Value / 1000;
 
-            // WIP ---- vykresli fraktal dle vyberu
+            // vykresli fraktal dle vyberu
             switch (comboBox1.SelectedIndex)
             {
                 case 0: // dragon curve
@@ -51,6 +55,7 @@ namespace Fractals
                     bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva, priblizeni, hScroll, vScroll);
                     break;
                 case 2: // julia
+                    bm = Julia.NakresliJulia(panel1.Width, panel1.Height, iterace, barva, priblizeni, hScroll, vScroll);
                     break;
             }
 
@@ -73,6 +78,7 @@ namespace Fractals
             }
         }
 
+        // upravi maximalni pocet iteraci u kazdeho fraktalu
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
@@ -80,12 +86,21 @@ namespace Fractals
                 case 0:
                     numericUpDown1.Maximum = 20;
                     numericUpDown1.Value = 10;
+                    numericUpDown2.Enabled = false;
+                    hScrollBar1.Enabled = false;
+                    vScrollBar1.Enabled = false;
                     break;
                 case 1:
-                    numericUpDown1.Maximum = 100;
+                    numericUpDown1.Maximum = 500;
                     numericUpDown1.Value = 50;
+                    numericUpDown2.Enabled = true;
+                    hScrollBar1.Enabled = true;
+                    vScrollBar1.Enabled = true;
                     break;
                 case 2:
+                    numericUpDown2.Enabled = true;
+                    hScrollBar1.Enabled = true;
+                    vScrollBar1.Enabled = true;
                     break;
             }
         }
@@ -99,6 +114,35 @@ namespace Fractals
         private void saveFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             bm.Save(saveFileDialog1.FileName);
+            string[] soubor = saveFileDialog1.FileName.Split(".");
+            string souborNazev = soubor[0].Insert(58, "\\Parametry\\") + ".txt";
+
+            // otevre streamwriter a ulozi hodnoty dle daneho fraktalu
+            StreamWriter sw = new StreamWriter(souborNazev);
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    sw.WriteLine(iterace);
+                    sw.WriteLine(comboBox1.SelectedIndex);
+                    sw.Close();
+                    break;
+                case 1:
+                    sw.WriteLine(iterace);
+                    sw.WriteLine(priblizeni);
+                    sw.WriteLine(hScroll);
+                    sw.WriteLine(vScroll);
+                    sw.WriteLine(comboBox1.SelectedIndex);
+                    sw.Close();
+                    break;
+                case 2:
+                    sw.WriteLine(iterace);
+                    sw.WriteLine(priblizeni);
+                    sw.WriteLine(hScroll);
+                    sw.WriteLine(vScroll);
+                    sw.WriteLine(comboBox1.SelectedIndex);
+                    sw.Close();
+                    break;
+            }
         }
 
         // otevre openfile dialog
@@ -108,9 +152,32 @@ namespace Fractals
         }
 
         private void openFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
+        { // nacte bitmapu ulozeneho obrazku a hodnoty pouzite pro jeho generovani ulozene v textovem souboru
             bm = new Bitmap(openFileDialog1.FileName);
+            string[] soubor = openFileDialog1.FileName.Split(".");
+            string souborNazev = soubor[0].Insert(58, "\\Parametry\\") + ".txt";
+
+            // otevre streamreader
+            StreamReader sr = new StreamReader(souborNazev);
+            string[] vysledky = sr.ReadToEnd().Split("\n");
+
+            // ulozi hodnoty ze souboru do programu
+            comboBox1.SelectedIndex = Convert.ToInt32(vysledky[4]);
+            iterace = Convert.ToInt32(vysledky[0]);
+            numericUpDown1.Value = iterace;
+            priblizeni = Convert.ToInt32(vysledky[1]);
+            numericUpDown2.Value = priblizeni;
+            hScroll = Convert.ToDouble(vysledky[2]);
+            hScrollBar1.Value = (int)(hScroll * 1000);
+            vScroll = Convert.ToDouble(vysledky[3]);
+            vScrollBar1.Value = (int)(vScroll * 1000);
+
             panel1.Invalidate();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        { // snad tohle smazu, jestli ne tak se omlouvam
+            MessageBox.Show("JÁ UŽ TO KURVA NEZVLÁDÁM");
         }
     }
 }

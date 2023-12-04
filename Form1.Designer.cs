@@ -262,6 +262,7 @@
             label4.TabIndex = 12;
             label4.Text = "POMOC";
             label4.TextAlign = ContentAlignment.MiddleCenter;
+            label4.Click += label4_Click;
             // 
             // colorDialog1
             // 
