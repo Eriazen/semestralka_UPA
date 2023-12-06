@@ -43,6 +43,9 @@
             button3 = new Button();
             button4 = new Button();
             label4 = new Label();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
             colorDialog1 = new ColorDialog();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
@@ -55,28 +58,31 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 6;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.0824738F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 36.08247F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.4639177F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.3092785F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.6804123F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.4639177F));
-            tableLayoutPanel1.Controls.Add(numericUpDown2, 3, 11);
-            tableLayoutPanel1.Controls.Add(label3, 3, 10);
-            tableLayoutPanel1.Controls.Add(numericUpDown1, 1, 11);
-            tableLayoutPanel1.Controls.Add(label1, 1, 10);
-            tableLayoutPanel1.Controls.Add(button1, 6, 10);
+            tableLayoutPanel1.Controls.Add(numericUpDown2, 3, 13);
+            tableLayoutPanel1.Controls.Add(label3, 3, 12);
+            tableLayoutPanel1.Controls.Add(numericUpDown1, 1, 13);
+            tableLayoutPanel1.Controls.Add(label1, 1, 12);
+            tableLayoutPanel1.Controls.Add(button1, 6, 12);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(comboBox1, 0, 11);
-            tableLayoutPanel1.Controls.Add(label2, 0, 10);
-            tableLayoutPanel1.Controls.Add(button2, 5, 8);
+            tableLayoutPanel1.Controls.Add(comboBox1, 0, 13);
+            tableLayoutPanel1.Controls.Add(label2, 0, 12);
+            tableLayoutPanel1.Controls.Add(button2, 5, 10);
             tableLayoutPanel1.Controls.Add(button3, 5, 0);
             tableLayoutPanel1.Controls.Add(button4, 5, 3);
             tableLayoutPanel1.Controls.Add(label4, 5, 6);
+            tableLayoutPanel1.Controls.Add(button5, 5, 11);
+            tableLayoutPanel1.Controls.Add(button6, 5, 8);
+            tableLayoutPanel1.Controls.Add(button7, 5, 9);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 12;
+            tableLayoutPanel1.RowCount = 14;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
@@ -84,13 +90,13 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 32F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(978, 744);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -98,7 +104,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(numericUpDown2, 2);
             numericUpDown2.Dock = DockStyle.Fill;
-            numericUpDown2.Location = new Point(587, 706);
+            numericUpDown2.Location = new Point(587, 705);
             numericUpDown2.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
@@ -113,7 +119,7 @@
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ControlText;
-            label3.Location = new Point(587, 668);
+            label3.Location = new Point(587, 667);
             label3.Name = "label3";
             label3.Size = new Size(240, 35);
             label3.TabIndex = 7;
@@ -124,7 +130,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(numericUpDown1, 2);
             numericUpDown1.Dock = DockStyle.Fill;
-            numericUpDown1.Location = new Point(344, 706);
+            numericUpDown1.Location = new Point(344, 705);
             numericUpDown1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(237, 31);
@@ -138,7 +144,7 @@
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(344, 668);
+            label1.Location = new Point(344, 667);
             label1.Name = "label1";
             label1.Size = new Size(237, 35);
             label1.TabIndex = 3;
@@ -148,10 +154,10 @@
             // button1
             // 
             button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(833, 671);
+            button1.Location = new Point(833, 670);
             button1.Name = "button1";
             tableLayoutPanel1.SetRowSpan(button1, 2);
-            button1.Size = new Size(142, 70);
+            button1.Size = new Size(142, 71);
             button1.TabIndex = 0;
             button1.Text = "Render";
             button1.UseVisualStyleBackColor = true;
@@ -166,8 +172,8 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            tableLayoutPanel1.SetRowSpan(panel1, 10);
-            panel1.Size = new Size(824, 662);
+            tableLayoutPanel1.SetRowSpan(panel1, 12);
+            panel1.Size = new Size(824, 661);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
@@ -197,7 +203,7 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Dragon-curve fraktál", "Mandelbrot fraktál", "Julia-set fraktál" });
-            comboBox1.Location = new Point(3, 706);
+            comboBox1.Location = new Point(3, 705);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(335, 33);
             comboBox1.TabIndex = 5;
@@ -209,7 +215,7 @@
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(3, 668);
+            label2.Location = new Point(3, 667);
             label2.Name = "label2";
             label2.Size = new Size(335, 35);
             label2.TabIndex = 6;
@@ -219,12 +225,11 @@
             // button2
             // 
             button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(833, 568);
+            button2.Location = new Point(833, 567);
             button2.Name = "button2";
-            tableLayoutPanel1.SetRowSpan(button2, 2);
-            button2.Size = new Size(142, 97);
+            button2.Size = new Size(142, 65);
             button2.TabIndex = 4;
-            button2.Text = "Výběr barvy";
+            button2.Text = "Barva fraktálu";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -263,6 +268,35 @@
             label4.Text = "POMOC";
             label4.TextAlign = ContentAlignment.MiddleCenter;
             label4.Click += label4_Click;
+            // 
+            // button5
+            // 
+            button5.Dock = DockStyle.Fill;
+            button5.Location = new Point(833, 638);
+            button5.Name = "button5";
+            button5.Size = new Size(142, 26);
+            button5.TabIndex = 13;
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Dock = DockStyle.Fill;
+            button6.Location = new Point(833, 461);
+            button6.Name = "button6";
+            button6.Size = new Size(142, 65);
+            button6.TabIndex = 14;
+            button6.Text = "Barva pozadí";
+            button6.UseVisualStyleBackColor = true;
+            button6.Click += button6_Click;
+            // 
+            // button7
+            // 
+            button7.Dock = DockStyle.Fill;
+            button7.Location = new Point(833, 532);
+            button7.Name = "button7";
+            button7.Size = new Size(142, 29);
+            button7.TabIndex = 15;
+            button7.UseVisualStyleBackColor = true;
             // 
             // colorDialog1
             // 
@@ -324,5 +358,8 @@
         private HScrollBar hScrollBar1;
         private VScrollBar vScrollBar1;
         private Label label4;
+        private Button button5;
+        private Button button6;
+        private Button button7;
     }
 }

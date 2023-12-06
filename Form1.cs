@@ -7,9 +7,10 @@ namespace Fractals
     {
         // deklarace/inicializace
         private Bitmap bm;
-        private Pen pen = new Pen(Color.Red);
+        private Pen pen = new Pen(Color.Black);
         private Graphics gr;
         private Color barva = Color.Black;
+        private Color barvaPozadi = Color.WhiteSmoke;
         private int iterace, priblizeni;
         private double hScroll, vScroll;
 
@@ -23,6 +24,7 @@ namespace Fractals
             // vybere dragon curve jako zakladni hodnotu
             comboBox1.SelectedIndex = 0;
             iterace = 10;
+            button5.BackColor = barva;
 
             // vykresli dragoncurve fraktal po spusteni
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
@@ -52,10 +54,10 @@ namespace Fractals
                         panel1.Height / 4, panel1.Width / 2, panel1.Height / 3, pen);
                     break;
                 case 1: //mandelbrot
-                    bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva, priblizeni, hScroll, vScroll);
+                    bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva, barvaPozadi, priblizeni, hScroll, vScroll);
                     break;
                 case 2: // julia
-                    bm = Julia.NakresliJulia(panel1.Width, panel1.Height, iterace, barva, priblizeni, hScroll, vScroll);
+                    bm = Julia.NakresliJulia(panel1.Width, panel1.Height, iterace, barva, barvaPozadi, priblizeni, hScroll, vScroll);
                     break;
             }
 
@@ -75,6 +77,7 @@ namespace Fractals
             {
                 pen.Color = cd.Color;
                 barva = cd.Color;
+                button5.BackColor = cd.Color;
             }
         }
 
@@ -122,24 +125,24 @@ namespace Fractals
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
-                    sw.WriteLine(iterace);
                     sw.WriteLine(comboBox1.SelectedIndex);
+                    sw.WriteLine(iterace);
                     sw.Close();
                     break;
                 case 1:
+                    sw.WriteLine(comboBox1.SelectedIndex);
                     sw.WriteLine(iterace);
                     sw.WriteLine(priblizeni);
                     sw.WriteLine(hScroll);
                     sw.WriteLine(vScroll);
-                    sw.WriteLine(comboBox1.SelectedIndex);
                     sw.Close();
                     break;
                 case 2:
+                    sw.WriteLine(comboBox1.SelectedIndex);
                     sw.WriteLine(iterace);
                     sw.WriteLine(priblizeni);
                     sw.WriteLine(hScroll);
                     sw.WriteLine(vScroll);
-                    sw.WriteLine(comboBox1.SelectedIndex);
                     sw.Close();
                     break;
             }
@@ -162,15 +165,34 @@ namespace Fractals
             string[] vysledky = sr.ReadToEnd().Split("\n");
 
             // ulozi hodnoty ze souboru do programu
-            comboBox1.SelectedIndex = Convert.ToInt32(vysledky[4]);
-            iterace = Convert.ToInt32(vysledky[0]);
-            numericUpDown1.Value = iterace;
-            priblizeni = Convert.ToInt32(vysledky[1]);
-            numericUpDown2.Value = priblizeni;
-            hScroll = Convert.ToDouble(vysledky[2]);
-            hScrollBar1.Value = (int)(hScroll * 1000);
-            vScroll = Convert.ToDouble(vysledky[3]);
-            vScrollBar1.Value = (int)(vScroll * 1000);
+            comboBox1.SelectedIndex = Convert.ToInt32(vysledky[0]);
+            switch (comboBox1.SelectedIndex)
+            {
+                case 0:
+                    iterace = Convert.ToInt32(vysledky[1]);
+                    numericUpDown1.Value = iterace;
+                    break;
+                case 1:
+                    iterace = Convert.ToInt32(vysledky[1]);
+                    numericUpDown1.Value = iterace;
+                    priblizeni = Convert.ToInt32(vysledky[2]);
+                    numericUpDown2.Value = priblizeni;
+                    hScroll = Convert.ToDouble(vysledky[3]);
+                    hScrollBar1.Value = (int)(hScroll * 1000);
+                    vScroll = Convert.ToDouble(vysledky[4]);
+                    vScrollBar1.Value = (int)(vScroll * 1000);
+                    break;
+                case 2:
+                    iterace = Convert.ToInt32(vysledky[1]);
+                    numericUpDown1.Value = iterace;
+                    priblizeni = Convert.ToInt32(vysledky[2]);
+                    numericUpDown2.Value = priblizeni;
+                    hScroll = Convert.ToDouble(vysledky[3]);
+                    hScrollBar1.Value = (int)(hScroll * 1000);
+                    vScroll = Convert.ToDouble(vysledky[4]);
+                    vScrollBar1.Value = (int)(vScroll * 1000);
+                    break;
+            }
 
             panel1.Invalidate();
         }
@@ -178,6 +200,17 @@ namespace Fractals
         private void label4_Click(object sender, EventArgs e)
         { // snad tohle smazu, jestli ne tak se omlouvam
             MessageBox.Show("JÁ UŽ TO KURVA NEZVLÁDÁM");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                barvaPozadi = cd.Color;
+                button7.BackColor = cd.Color;
+                panel1.BackColor = cd.Color;
+            }
         }
     }
 }

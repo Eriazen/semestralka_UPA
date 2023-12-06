@@ -6,7 +6,7 @@
         private static int x0, y0;
         private static double x, y;
 
-        public static Bitmap NakresliMandelbrot(int sirka, int vyska, int iterace, Color barva, int priblizeni, double offsetX, double offsetY)
+        public static Bitmap NakresliMandelbrot(int sirka, int vyska, int iterace, Color barva, Color barvaPozadi, int priblizeni, double offsetX, double offsetY)
         {
             // deklarace, inicializace
             Bitmap bm = new Bitmap(sirka, vyska);
@@ -38,7 +38,7 @@
                     } while (i < iterace);
 
                     // pokud vypocet "vybouchne", tak obarvi pixel na bilo, jinak na zvolenou barvu
-                    if (i < iterace) tempBarva = Color.WhiteSmoke;
+                    if (i < iterace) tempBarva = barvaPozadi;
                     else tempBarva = barva;
 
                     bm.SetPixel(x0, y0, tempBarva);

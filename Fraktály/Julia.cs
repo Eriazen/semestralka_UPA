@@ -5,7 +5,7 @@
         private static int x0, y0;
         private static double x, y;
 
-        public static Bitmap NakresliJulia(int sirka, int vyska, int iterace, Color barva, int priblizeni,
+        public static Bitmap NakresliJulia(int sirka, int vyska, int iterace, Color barva, Color barvaPozadi, int priblizeni,
             double offsetX, double offsetY)
         {
             // deklarace, inicializace
@@ -31,7 +31,7 @@
                         if (z.Magnituda() > 2) break;
                     } while (i < iterace);
 
-                    if (i < iterace) tempBarva = Color.WhiteSmoke;
+                    if (i < iterace) tempBarva = barvaPozadi;
                     else tempBarva = barva;
 
                     bm.SetPixel(x0, y0, tempBarva);
