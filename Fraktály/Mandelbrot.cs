@@ -38,8 +38,7 @@
                     } while (i < iterace);
 
                     // pokud vypocet "vybouchne", tak obarvi pixel na bilo, jinak na zvolenou barvu
-                    if (i < iterace) tempBarva = barvaPozadi;
-                    else tempBarva = barva;
+                    tempBarva = i < iterace ? barvaPozadi : barva;
 
                     bm.SetPixel(x0, y0, tempBarva);
                 }

@@ -1,6 +1,4 @@
-﻿using System.Drawing.Text;
-
-namespace Fractals.Fraktály
+﻿namespace Fractals.Fraktály
 {
     internal class DragonCurve
     { // rekurzivni metoda pro kresleni Dragon Curve fraktalu
