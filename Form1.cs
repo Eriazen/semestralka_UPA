@@ -1,5 +1,4 @@
 using Fractals.Fraktály;
-using ThreadState = System.Diagnostics.ThreadState;
 
 namespace Fractals
 {
@@ -12,7 +11,7 @@ namespace Fractals
         private Color barva = Color.Black;
         private Color barvaPozadi = Color.WhiteSmoke;
         private int iterace, priblizeni;
-        private double hScroll, vScroll;
+        private double hScroll, vScroll, cRe, cIm;
 
         public Form1()
         {
@@ -25,6 +24,10 @@ namespace Fractals
             comboBox1.SelectedIndex = 0;
             iterace = 10;
             button5.BackColor = barva;
+
+            // zde musi uzivatel nastavit slozku pro ukladani obrazku
+            saveFileDialog1.InitialDirectory = "C:\\Users\\vitve\\Documents\\Škola\\VŠCHT\\UPA\\Fractals\\Ulozene";
+            openFileDialog1.InitialDirectory = saveFileDialog1.InitialDirectory;
 
             // vykresli dragoncurve fraktal po spusteni
             bm = new Bitmap(panel1.Width, panel1.Height, System.Drawing.Imaging.PixelFormat.Format32bppPArgb);
@@ -42,6 +45,9 @@ namespace Fractals
             priblizeni = (int)numericUpDown2.Value;
             hScroll = (double)hScrollBar1.Value / 1000;
             vScroll = (double)vScrollBar1.Value / 1000;
+            cRe = (double)numericUpDown3.Value;
+            cIm = (double)numericUpDown4.Value;
+
 
             // vykresli fraktal dle vyberu
             switch (comboBox1.SelectedIndex)
@@ -57,7 +63,7 @@ namespace Fractals
                     bm = Mandelbrot.NakresliMandelbrot(panel1.Width, panel1.Height, iterace, barva, barvaPozadi, priblizeni, hScroll, vScroll);
                     break;
                 case 2: // julia
-                    bm = Julia.NakresliJulia(panel1.Width, panel1.Height, iterace, barva, barvaPozadi, priblizeni, hScroll, vScroll);
+                    bm = Julia.NakresliJulia(panel1.Width, panel1.Height, iterace, barva, barvaPozadi, priblizeni, cRe, cIm, hScroll, vScroll);
                     break;
             }
 
@@ -81,7 +87,7 @@ namespace Fractals
             }
         }
 
-        // upravi maximalni pocet iteraci u kazdeho fraktalu
+        // upravi maximalni pocet iteraci a jine hodnoty u dle zvoleneho fraktalu
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBox1.SelectedIndex)
@@ -90,6 +96,8 @@ namespace Fractals
                     numericUpDown1.Maximum = 20;
                     numericUpDown1.Value = 10;
                     numericUpDown2.Enabled = false;
+                    numericUpDown3.Enabled = false;
+                    numericUpDown4.Enabled = false;
                     hScrollBar1.Enabled = false;
                     vScrollBar1.Enabled = false;
                     break;
@@ -97,11 +105,17 @@ namespace Fractals
                     numericUpDown1.Maximum = 500;
                     numericUpDown1.Value = 50;
                     numericUpDown2.Enabled = true;
+                    numericUpDown3.Enabled = false;
+                    numericUpDown4.Enabled = false;
                     hScrollBar1.Enabled = true;
                     vScrollBar1.Enabled = true;
                     break;
                 case 2:
+                    numericUpDown1.Maximum = 500;
+                    numericUpDown1.Value = 50;
                     numericUpDown2.Enabled = true;
+                    numericUpDown3.Enabled = true;
+                    numericUpDown4.Enabled = true;
                     hScrollBar1.Enabled = true;
                     vScrollBar1.Enabled = true;
                     break;
@@ -143,6 +157,8 @@ namespace Fractals
                     sw.WriteLine(priblizeni);
                     sw.WriteLine(hScroll);
                     sw.WriteLine(vScroll);
+                    sw.WriteLine(cRe);
+                    sw.WriteLine(cIm);
                     sw.Close();
                     break;
             }
@@ -191,6 +207,10 @@ namespace Fractals
                     hScrollBar1.Value = (int)(hScroll * 1000);
                     vScroll = Convert.ToDouble(vysledky[4]);
                     vScrollBar1.Value = (int)(vScroll * 1000);
+                    cRe = Convert.ToDouble(vysledky[5]);
+                    numericUpDown3.Value = (decimal)cRe;
+                    cIm = Convert.ToDouble(vysledky[6]);
+                    numericUpDown4.Value = (decimal)cIm;
                     break;
             }
 
@@ -199,7 +219,7 @@ namespace Fractals
 
         private void label4_Click(object sender, EventArgs e)
         { // snad tohle smazu, jestli ne tak se omlouvam
-            MessageBox.Show("JÁ UŽ TO KURVA NEZVLÁDÁM");
+            MessageBox.Show("Hehe, zde se žádná pomoc nenachází.");
         }
 
         private void button6_Click(object sender, EventArgs e)

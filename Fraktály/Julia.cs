@@ -6,7 +6,7 @@
         private static double x, y;
 
         public static Bitmap NakresliJulia(int sirka, int vyska, int iterace, Color barva, Color barvaPozadi, int priblizeni,
-            double offsetX, double offsetY)
+            double cRe, double cIm, double offsetX, double offsetY)
         {
             // deklarace, inicializace
             Bitmap bm = new Bitmap(sirka, vyska);
@@ -16,23 +16,21 @@
             {
                 for (y0 = 0; y0 < vyska; y0++)
                 {
-                    x = (((double)(x0 - (sirka / 2)) / (sirka / 4)) / priblizeni) + offsetX;
-                    y = (((double)(y0 - (vyska / 2)) / (vyska / 4)) / priblizeni) + offsetY;
+                    x = (x0 - sirka / 2) / (0.5 * priblizeni * sirka) + offsetX;
+                    y = (y0 - vyska / 2) / (0.5 * priblizeni * vyska) + offsetY;
 
-                    MandelbrotVypocty l = new MandelbrotVypocty(0.5, 0.5);
-                    MandelbrotVypocty z = new MandelbrotVypocty(0, 0);
+                    int i;
 
-                    int i = 0;
-
-                    do
+                    for (i = 0; i < iterace; i++)
                     {
-                        i++;
-                        z.Julia(l);
-                        if (z.Magnituda() > 2) break;
-                    } while (i < iterace);
+                        double tempX = x;
+                        double tempY = y;
+                        x = (tempX * tempX) - (tempY * tempY) + cRe;
+                        y = 2 * tempX * tempY + cIm;
+                        if ((x * x + y * y) > 4) break;
+                    }
 
-                    if (i < iterace) tempBarva = barvaPozadi;
-                    else tempBarva = barva;
+                    tempBarva = i < iterace ? barvaPozadi : barva;
 
                     bm.SetPixel(x0, y0, tempBarva);
                 }

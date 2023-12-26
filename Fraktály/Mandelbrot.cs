@@ -18,8 +18,8 @@
                 for (y0 = 0; y0 < vyska; y0++)
                 {
                     // prirazeni hodnot promennym x a y
-                    x = (((double)(x0 - (sirka / 2)) / (sirka / 4)) / priblizeni) + offsetX;
-                    y = (((double)(y0 - (vyska / 2)) / (vyska / 4)) / priblizeni) + offsetY;
+                    x = (x0 - sirka / 2) / (0.5 * priblizeni * sirka) + offsetX;
+                    y = (y0 - vyska / 2) / (0.5 * priblizeni * vyska) + offsetY;
 
                     // inicializace komplexu
                     MandelbrotVypocty c = new MandelbrotVypocty(x, y);

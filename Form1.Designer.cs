@@ -46,6 +46,10 @@
             button5 = new Button();
             button6 = new Button();
             button7 = new Button();
+            label5 = new Label();
+            label6 = new Label();
+            numericUpDown3 = new NumericUpDown();
+            numericUpDown4 = new NumericUpDown();
             colorDialog1 = new ColorDialog();
             saveFileDialog1 = new SaveFileDialog();
             openFileDialog1 = new OpenFileDialog();
@@ -53,6 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -64,25 +70,29 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 22.6804123F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 32F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15.4639177F));
-            tableLayoutPanel1.Controls.Add(numericUpDown2, 3, 13);
-            tableLayoutPanel1.Controls.Add(label3, 3, 12);
-            tableLayoutPanel1.Controls.Add(numericUpDown1, 1, 13);
-            tableLayoutPanel1.Controls.Add(label1, 1, 12);
-            tableLayoutPanel1.Controls.Add(button1, 6, 12);
+            tableLayoutPanel1.Controls.Add(numericUpDown2, 3, 17);
+            tableLayoutPanel1.Controls.Add(label3, 3, 16);
+            tableLayoutPanel1.Controls.Add(numericUpDown1, 1, 17);
+            tableLayoutPanel1.Controls.Add(label1, 1, 16);
+            tableLayoutPanel1.Controls.Add(button1, 6, 16);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(comboBox1, 0, 13);
-            tableLayoutPanel1.Controls.Add(label2, 0, 12);
-            tableLayoutPanel1.Controls.Add(button2, 5, 10);
+            tableLayoutPanel1.Controls.Add(comboBox1, 0, 17);
+            tableLayoutPanel1.Controls.Add(label2, 0, 16);
+            tableLayoutPanel1.Controls.Add(button2, 5, 14);
             tableLayoutPanel1.Controls.Add(button3, 5, 0);
             tableLayoutPanel1.Controls.Add(button4, 5, 3);
             tableLayoutPanel1.Controls.Add(label4, 5, 6);
-            tableLayoutPanel1.Controls.Add(button5, 5, 11);
-            tableLayoutPanel1.Controls.Add(button6, 5, 8);
-            tableLayoutPanel1.Controls.Add(button7, 5, 9);
+            tableLayoutPanel1.Controls.Add(button5, 5, 15);
+            tableLayoutPanel1.Controls.Add(button6, 5, 12);
+            tableLayoutPanel1.Controls.Add(button7, 5, 13);
+            tableLayoutPanel1.Controls.Add(label5, 5, 8);
+            tableLayoutPanel1.Controls.Add(label6, 5, 10);
+            tableLayoutPanel1.Controls.Add(numericUpDown3, 5, 11);
+            tableLayoutPanel1.Controls.Add(numericUpDown4, 5, 9);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 14;
+            tableLayoutPanel1.RowCount = 18;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
@@ -90,7 +100,11 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -104,7 +118,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(numericUpDown2, 2);
             numericUpDown2.Dock = DockStyle.Fill;
-            numericUpDown2.Location = new Point(587, 705);
+            numericUpDown2.Location = new Point(587, 703);
             numericUpDown2.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDown2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown2.Name = "numericUpDown2";
@@ -119,7 +133,7 @@
             label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = SystemColors.ControlText;
-            label3.Location = new Point(587, 667);
+            label3.Location = new Point(587, 665);
             label3.Name = "label3";
             label3.Size = new Size(240, 35);
             label3.TabIndex = 7;
@@ -130,7 +144,7 @@
             // 
             tableLayoutPanel1.SetColumnSpan(numericUpDown1, 2);
             numericUpDown1.Dock = DockStyle.Fill;
-            numericUpDown1.Location = new Point(344, 705);
+            numericUpDown1.Location = new Point(344, 703);
             numericUpDown1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(237, 31);
@@ -144,7 +158,7 @@
             label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(344, 667);
+            label1.Location = new Point(344, 665);
             label1.Name = "label1";
             label1.Size = new Size(237, 35);
             label1.TabIndex = 3;
@@ -154,10 +168,10 @@
             // button1
             // 
             button1.Dock = DockStyle.Fill;
-            button1.Location = new Point(833, 670);
+            button1.Location = new Point(833, 668);
             button1.Name = "button1";
             tableLayoutPanel1.SetRowSpan(button1, 2);
-            button1.Size = new Size(142, 71);
+            button1.Size = new Size(142, 73);
             button1.TabIndex = 0;
             button1.Text = "Render";
             button1.UseVisualStyleBackColor = true;
@@ -172,8 +186,8 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            tableLayoutPanel1.SetRowSpan(panel1, 12);
-            panel1.Size = new Size(824, 661);
+            tableLayoutPanel1.SetRowSpan(panel1, 16);
+            panel1.Size = new Size(824, 659);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
@@ -203,7 +217,7 @@
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Dragon-curve fraktál", "Mandelbrot fraktál", "Julia-set fraktál" });
-            comboBox1.Location = new Point(3, 705);
+            comboBox1.Location = new Point(3, 703);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(335, 33);
             comboBox1.TabIndex = 5;
@@ -215,7 +229,7 @@
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ControlText;
-            label2.Location = new Point(3, 667);
+            label2.Location = new Point(3, 665);
             label2.Name = "label2";
             label2.Size = new Size(335, 35);
             label2.TabIndex = 6;
@@ -225,7 +239,7 @@
             // button2
             // 
             button2.Dock = DockStyle.Fill;
-            button2.Location = new Point(833, 567);
+            button2.Location = new Point(833, 565);
             button2.Name = "button2";
             button2.Size = new Size(142, 65);
             button2.TabIndex = 4;
@@ -272,7 +286,8 @@
             // button5
             // 
             button5.Dock = DockStyle.Fill;
-            button5.Location = new Point(833, 638);
+            button5.Enabled = false;
+            button5.Location = new Point(833, 636);
             button5.Name = "button5";
             button5.Size = new Size(142, 26);
             button5.TabIndex = 13;
@@ -281,7 +296,7 @@
             // button6
             // 
             button6.Dock = DockStyle.Fill;
-            button6.Location = new Point(833, 461);
+            button6.Location = new Point(833, 459);
             button6.Name = "button6";
             button6.Size = new Size(142, 65);
             button6.TabIndex = 14;
@@ -292,11 +307,60 @@
             // button7
             // 
             button7.Dock = DockStyle.Fill;
-            button7.Location = new Point(833, 532);
+            button7.Enabled = false;
+            button7.Location = new Point(833, 530);
             button7.Name = "button7";
             button7.Size = new Size(142, 29);
             button7.TabIndex = 15;
             button7.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(833, 316);
+            label5.Name = "label5";
+            label5.Size = new Size(142, 35);
+            label5.TabIndex = 16;
+            label5.Text = "Reálná část";
+            label5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
+            label6.Font = new Font("Century Gothic", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(833, 386);
+            label6.Name = "label6";
+            label6.Size = new Size(142, 35);
+            label6.TabIndex = 17;
+            label6.Text = "Imaginární část";
+            label6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // numericUpDown3
+            // 
+            numericUpDown3.DecimalPlaces = 2;
+            numericUpDown3.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            numericUpDown3.Location = new Point(833, 424);
+            numericUpDown3.Maximum = new decimal(new int[] { 2, 0, 0, 0 });
+            numericUpDown3.Minimum = new decimal(new int[] { 2, 0, 0, int.MinValue });
+            numericUpDown3.Name = "numericUpDown3";
+            numericUpDown3.Size = new Size(142, 31);
+            numericUpDown3.TabIndex = 18;
+            numericUpDown3.Value = new decimal(new int[] { 26, 0, 0, -2147352576 });
+            // 
+            // numericUpDown4
+            // 
+            numericUpDown4.DecimalPlaces = 2;
+            numericUpDown4.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
+            numericUpDown4.Location = new Point(833, 354);
+            numericUpDown4.Maximum = new decimal(new int[] { 2, 0, 0, 0 });
+            numericUpDown4.Minimum = new decimal(new int[] { 2, 0, 0, int.MinValue });
+            numericUpDown4.Name = "numericUpDown4";
+            numericUpDown4.Size = new Size(142, 31);
+            numericUpDown4.TabIndex = 19;
+            numericUpDown4.Value = new decimal(new int[] { 64, 0, 0, 131072 });
             // 
             // colorDialog1
             // 
@@ -335,6 +399,8 @@
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown4).EndInit();
             ResumeLayout(false);
         }
 
@@ -361,5 +427,9 @@
         private Button button5;
         private Button button6;
         private Button button7;
+        private Label label5;
+        private Label label6;
+        private NumericUpDown numericUpDown3;
+        private NumericUpDown numericUpDown4;
     }
 }

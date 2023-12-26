@@ -32,11 +32,5 @@
             x += c.x;
             y += c.y;
         }
-
-        public void Julia(MandelbrotVypocty l)
-        {
-            x = x - (x * x) - l.x;
-            y = y - (y * y) - l.y;
-        }
     }
 }
